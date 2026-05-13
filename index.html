@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio — Halaman Utama</title>
+  <title>Portofolio — Sehabidha Maulana</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- Tailwind Custom Config -->
   <script>
     tailwind.config = {
       theme: {
@@ -45,13 +44,12 @@
     }
   </script>
   <style>
-    /* Minimal custom CSS — hanya untuk hal yang tidak bisa dilakukan murni Tailwind */
     body { font-family: 'DM Sans', sans-serif; }
     .page { display: none; }
     .page.active { display: block; }
     #home { display: none; }
     #home.active { display: flex; }
-    .nav-links a.active { color: #C0522A; }
+    .nav-links a.active { color: #C0522A; font-weight: 600; }
     .photo-frame::before {
       content: '';
       position: absolute;
@@ -62,6 +60,31 @@
       transform: rotate(2deg);
     }
     audio, video { width: 100%; display: block; border-radius: 4px; }
+
+    /* Styling form input agar sesuai tema */
+    .form-input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1px solid rgba(26,23,20,0.2);
+      border-radius: 4px;
+      background: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: #1A1714;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: #C0522A;
+      box-shadow: 0 0 0 3px rgba(192,82,42,0.1);
+    }
+    select.form-input { cursor: pointer; }
+
+    @keyframes popIn {
+      0%   { opacity: 0; transform: scale(0.95) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .result-card { animation: popIn 0.35s ease both; }
   </style>
 </head>
 <body class="bg-cream text-ink min-h-screen overflow-x-hidden">
@@ -69,10 +92,10 @@
 <!-- ===== NAV ===== -->
 <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center
             px-12 py-5 bg-cream/90 backdrop-blur-md border-b border-ink/10
-            max-sm:px-5 max-sm:py-4">
-  <a class="font-playfair text-xl italic text-rust no-underline"
-     href="#" onclick="showPage('home')">✦ Portofolio</a>
-  <ul class="nav-links flex gap-8 list-none max-sm:gap-4">
+            max-sm:px-4 max-sm:py-3">
+  <a class="font-playfair text-xl italic text-rust no-underline cursor-pointer"
+     onclick="showPage('home')">✦ Portofolio</a>
+  <ul class="nav-links flex gap-6 list-none max-sm:gap-3">
     <li><a href="#" onclick="showPage('home')"    id="nav-home"    class="active
         no-underline text-ink text-xs font-medium tracking-widest uppercase
         hover:text-rust transition-colors duration-200">Beranda</a></li>
@@ -85,47 +108,38 @@
     <li><a href="#" onclick="showPage('hobi')"    id="nav-hobi"
         class="no-underline text-ink text-xs font-medium tracking-widest uppercase
         hover:text-rust transition-colors duration-200">Hobi</a></li>
+    <li><a href="#" onclick="showPage('form')"    id="nav-form"
+        class="no-underline text-ink text-xs font-medium tracking-widest uppercase
+        hover:text-rust transition-colors duration-200">Form</a></li>
   </ul>
 </nav>
 
 <!-- ===== HOME ===== -->
 <section id="home" class="page active flex-col items-center justify-center
                            min-h-screen pt-0 relative overflow-hidden">
-
-  <!-- Background shapes -->
   <div class="absolute rounded-full pointer-events-none
               w-[600px] h-[600px] -top-36 -right-36
               bg-[radial-gradient(circle,rgba(192,82,42,0.08)_0%,transparent_70%)]"></div>
   <div class="absolute rounded-full pointer-events-none
               w-[400px] h-[400px] -bottom-24 -left-24
               bg-[radial-gradient(circle,rgba(212,168,83,0.1)_0%,transparent_70%)]"></div>
-
-  <!-- Content -->
   <div class="text-center z-10 p-8 animate-fadeUp">
-    <p class="text-xs tracking-[0.2em] uppercase text-sage mb-6">
-      Selamat Datang di Portofolio Saya
-    </p>
+    <p class="text-xs tracking-[0.2em] uppercase text-sage mb-6">Selamat Datang di Portofolio Saya</p>
     <h1 class="font-playfair text-[clamp(3.5rem,8vw,7rem)] leading-[1.05] text-ink mb-2">
-      Halo, Saya<br>
-      <em class="text-rust italic">Sehabidha Maulana</em>
+      Halo, Saya<br><em class="text-rust italic">Sehabidha Maulana</em>
     </h1>
-    <p class="text-base text-sage mt-6 mb-10 font-light max-w-[420px]
-              leading-7 mx-auto">
-      Mahasiswa Program Studi Teknologi Informasi yang sedang belajar
-      membangun web yang indah dan fungsional.
+    <p class="text-base text-sage mt-6 mb-10 font-light max-w-[420px] leading-7 mx-auto">
+      Mahasiswa Program Studi Teknologi Informasi yang sedang belajar membangun web yang indah dan fungsional.
     </p>
     <button onclick="showPage('biodata')"
-            class="inline-block px-10 py-3 bg-rust text-white text-xs
-                   tracking-widest uppercase font-medium rounded-sm
-                   transition-all duration-200 hover:bg-ink hover:-translate-y-0.5
-                   cursor-pointer border-0">
+            class="inline-block px-10 py-3 bg-rust text-white text-xs tracking-widest
+                   uppercase font-medium rounded-sm transition-all duration-200
+                   hover:bg-ink hover:-translate-y-0.5 cursor-pointer border-0">
       Kenali Saya →
     </button>
   </div>
-
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col
-              items-center gap-2 text-sage text-[0.7rem] tracking-[0.15em] uppercase">
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center
+              gap-2 text-sage text-[0.7rem] tracking-[0.15em] uppercase">
     <span>Scroll</span>
     <div class="w-px h-10 bg-gradient-to-b from-sage to-transparent animate-scrollPulse"></div>
   </div>
@@ -135,17 +149,12 @@
 <section id="biodata" class="page pt-20 bg-paper">
   <div class="grid grid-cols-[1fr_2fr] gap-16 max-w-4xl mx-auto px-8 py-16
               animate-fadeUp max-md:grid-cols-1 max-md:gap-8">
-
-    <!-- Foto -->
     <div class="sticky top-24 self-start text-center max-md:static">
       <div class="photo-frame relative w-[200px] h-[240px] mx-auto mb-6
                   rounded overflow-hidden bg-blush flex items-center justify-center">
-        <img
-          src="https://i.pinimg.com/736x/58/8e/a2/588ea2fed6ee922cb845fa70115227d2.jpg"
-          alt="Foto Profil"
-          class="w-full h-full object-cover"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-        />
+        <img src="https://i.pinimg.com/736x/58/8e/a2/588ea2fed6ee922cb845fa70115227d2.jpg"
+             alt="Foto Profil" class="w-full h-full object-cover"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
         <span class="text-7xl leading-none" style="display:none;">🧑‍🎓</span>
       </div>
       <p class="font-playfair text-2xl mb-1">Sehabidha</p>
@@ -153,75 +162,31 @@
       <button onclick="alert('Ini adalah Halaman Biodata!')"
               class="mt-3 px-4 py-2 bg-transparent border border-rust text-rust
                      rounded text-xs tracking-widest uppercase cursor-pointer
-                     transition-all duration-200 hover:bg-rust hover:text-white">
-        Info
-      </button>
+                     transition-all duration-200 hover:bg-rust hover:text-white">Info</button>
     </div>
-
-    <!-- Info -->
     <div>
       <h2 class="font-playfair text-4xl mb-2 text-ink">Biodata Diri</h2>
       <div class="w-12 h-0.5 bg-rust mb-8"></div>
-
       <table class="w-full border-collapse">
         <tbody>
-          <!-- Baris tabel menggunakan class Tailwind -->
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 w-2/5 text-sage font-medium text-xs tracking-wide uppercase">Nama Lengkap</td>
-            <td class="py-3.5 px-2 text-sm">Sehabidha Maulana</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">NIM</td>
-            <td class="py-3.5 px-2 text-sm">20240140086</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Tempat Lahir</td>
-            <td class="py-3.5 px-2 text-sm">Pati</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Tanggal Lahir</td>
-            <td class="py-3.5 px-2 text-sm">15 Maret 2005</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Jenis Kelamin</td>
-            <td class="py-3.5 px-2 text-sm">Laki-laki</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Agama</td>
-            <td class="py-3.5 px-2 text-sm">Islam</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Alamat</td>
-            <td class="py-3.5 px-2 text-sm">Jl. Gejawan Wetan, Yogyakarta</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Telepon</td>
-            <td class="py-3.5 px-2 text-sm">+62 812-3456-7890</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Email</td>
-            <td class="py-3.5 px-2 text-sm">s.maulana.ft24@mail.umy.ac.id</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Program Studi</td>
-            <td class="py-3.5 px-2 text-sm">Teknologi Informasi</td>
-          </tr>
-          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Fakultas</td>
-            <td class="py-3.5 px-2 text-sm">Fakultas Teknik</td>
-          </tr>
-          <tr class="hover:bg-rust/5 transition-colors duration-200">
-            <td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Universitas</td>
-            <td class="py-3.5 px-2 text-sm">Universitas Muhammadiyah Yogyakarta</td>
-          </tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 w-2/5 text-sage font-medium text-xs tracking-wide uppercase">Nama Lengkap</td><td class="py-3.5 px-2 text-sm">Sehabidha Maulana</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">NIM</td><td class="py-3.5 px-2 text-sm">20240140086</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Tempat Lahir</td><td class="py-3.5 px-2 text-sm">Pati</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Tanggal Lahir</td><td class="py-3.5 px-2 text-sm">15 Maret 2005</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Jenis Kelamin</td><td class="py-3.5 px-2 text-sm">Laki-laki</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Agama</td><td class="py-3.5 px-2 text-sm">Islam</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Alamat</td><td class="py-3.5 px-2 text-sm">Jl. Gejawan Wetan, Yogyakarta</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Telepon</td><td class="py-3.5 px-2 text-sm">+62 812-3456-7890</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Email</td><td class="py-3.5 px-2 text-sm">s.maulana.ft24@mail.umy.ac.id</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Program Studi</td><td class="py-3.5 px-2 text-sm">Teknologi Informasi</td></tr>
+          <tr class="border-b border-ink/10 hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Fakultas</td><td class="py-3.5 px-2 text-sm">Fakultas Teknik</td></tr>
+          <tr class="hover:bg-rust/5 transition-colors duration-200"><td class="py-3.5 px-2 text-sage font-medium text-xs tracking-wide uppercase">Universitas</td><td class="py-3.5 px-2 text-sm">Universitas Muhammadiyah Yogyakarta</td></tr>
         </tbody>
       </table>
-
-      <!-- Audio -->
       <div class="mt-12 pt-8 border-t border-ink/10">
         <h3 class="font-playfair text-xl italic mb-4">🎵 Lagu Favorit Saya</h3>
         <audio controls>
-          <source src="https://dn720306.ca.archive.org/0/items/09-hawannur-sholawat-dangdut/09%20Hawannur%20-%20SHOLAWAT%20DANGDUT.mp3" type="audio/mpeg" />
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
           Browser Anda tidak mendukung audio.
         </audio>
         <button onclick="alert('Ini adalah Audio Favorit!')"
@@ -238,76 +203,39 @@
 <!-- ===== TENTANG ===== -->
 <section id="tentang" class="page pt-20 bg-cream">
   <div class="max-w-3xl mx-auto px-8 py-16 animate-fadeUp">
-
     <h2 class="font-playfair text-5xl mb-2 text-ink">Tentang Saya</h2>
     <div class="w-12 h-0.5 bg-rust mb-8"></div>
-
-    <p class="text-lg text-rust italic mb-8 font-playfair">
-      "Belajar, berkarya, dan terus berkembang setiap harinya."
-    </p>
-
+    <p class="text-lg text-rust italic mb-8 font-playfair">"Belajar, berkarya, dan terus berkembang setiap harinya."</p>
     <div class="text-[0.95rem] leading-[1.85] text-[#3A3530] space-y-5">
-      <p>Saya adalah seorang mahasiswa Program Studi Teknologi Informasi di Universitas
-         Muhammadiyah Yogyakarta. Saya memiliki ketertarikan yang besar dalam dunia
-         pengembangan web, terutama dalam mendesain tampilan antarmuka yang menarik dan
-         ramah pengguna.</p>
-      <p>Sejak kecil saya sudah tertarik dengan dunia teknologi dan komputer. Saya percaya
-         bahwa teknologi adalah alat untuk memudahkan kehidupan manusia, dan saya ingin
-         menjadi bagian dari perubahan tersebut melalui karya-karya digital yang bermakna.</p>
-      <p>Saat ini saya sedang mendalami HTML, CSS, JavaScript, serta berbagai framework
-         modern. Saya juga aktif berpartisipasi dalam kegiatan kemahasiswaan dan komunitas
-         teknologi di kampus.</p>
+      <p>Saya adalah seorang mahasiswa Program Studi Teknologi Informasi di Universitas Muhammadiyah Yogyakarta. Saya memiliki ketertarikan yang besar dalam dunia pengembangan web, terutama dalam mendesain tampilan antarmuka yang menarik dan ramah pengguna.</p>
+      <p>Sejak kecil saya sudah tertarik dengan dunia teknologi dan komputer. Saya percaya bahwa teknologi adalah alat untuk memudahkan kehidupan manusia, dan saya ingin menjadi bagian dari perubahan tersebut melalui karya-karya digital yang bermakna.</p>
+      <p>Saat ini saya sedang mendalami HTML, CSS, JavaScript, serta berbagai framework modern. Saya juga aktif berpartisipasi dalam kegiatan kemahasiswaan dan komunitas teknologi di kampus.</p>
     </div>
-
-    <!-- Skills grid -->
     <div class="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 mt-10">
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        HTML &amp; CSS <span class="block text-xs text-sage mt-1 font-normal">Frontend Development</span>
-      </div>
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        JavaScript <span class="block text-xs text-sage mt-1 font-normal">Pemrograman Web</span>
-      </div>
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        UI/UX Design <span class="block text-xs text-sage mt-1 font-normal">Desain Antarmuka</span>
-      </div>
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        Python <span class="block text-xs text-sage mt-1 font-normal">Pemrograman Umum</span>
-      </div>
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        Photoshop <span class="block text-xs text-sage mt-1 font-normal">Desain Grafis</span>
-      </div>
-      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">
-        Git &amp; GitHub <span class="block text-xs text-sage mt-1 font-normal">Version Control</span>
-      </div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">HTML &amp; CSS <span class="block text-xs text-sage mt-1 font-normal">Frontend Development</span></div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">JavaScript <span class="block text-xs text-sage mt-1 font-normal">Pemrograman Web</span></div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">UI/UX Design <span class="block text-xs text-sage mt-1 font-normal">Desain Antarmuka</span></div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">Python <span class="block text-xs text-sage mt-1 font-normal">Pemrograman Umum</span></div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">Photoshop <span class="block text-xs text-sage mt-1 font-normal">Desain Grafis</span></div>
+      <div class="bg-white rounded p-5 border-l-4 border-rust text-sm font-medium shadow-sm">Git &amp; GitHub <span class="block text-xs text-sage mt-1 font-normal">Version Control</span></div>
     </div>
-
-    <!-- Gallery -->
     <div class="grid grid-cols-2 gap-4 mt-12 max-sm:grid-cols-1">
       <div class="rounded overflow-hidden bg-blush aspect-[4/3] relative">
         <picture>
           <source media="(max-width:600px)" srcset="https://i.pinimg.com/1200x/8a/32/4b/8a324b052d0951d80d12b68f57f5f39d.jpg"/>
-          <img src="https://i.pinimg.com/1200x/8a/32/4b/8a324b052d0951d80d12b68f57f5f39d.jpg"
-               alt="Kegiatan Belajar" class="w-full h-full object-cover block"/>
+          <img src="https://i.pinimg.com/1200x/8a/32/4b/8a324b052d0951d80d12b68f57f5f39d.jpg" alt="Kegiatan Belajar" class="w-full h-full object-cover block"/>
         </picture>
-        <div class="absolute bottom-0 left-0 right-0 bg-ink/60 text-white text-xs px-3 py-2 backdrop-blur-sm">
-          Kegiatan Belajar
-        </div>
+        <div class="absolute bottom-0 left-0 right-0 bg-ink/60 text-white text-xs px-3 py-2 backdrop-blur-sm">Kegiatan Belajar</div>
       </div>
       <div class="rounded overflow-hidden bg-blush aspect-[4/3] relative">
         <picture>
           <source media="(max-width:600px)" srcset="https://i.pinimg.com/1200x/0d/d3/c0/0dd3c09e4bc945233d977352c243f719.jpg"/>
-          <img src="https://i.pinimg.com/1200x/0d/d3/c0/0dd3c09e4bc945233d977352c243f719.jpg"
-               alt="Kampus UMY" class="w-full h-full object-cover block"/>
+          <img src="https://i.pinimg.com/1200x/0d/d3/c0/0dd3c09e4bc945233d977352c243f719.jpg" alt="Kampus UMY" class="w-full h-full object-cover block"/>
         </picture>
-        <div class="absolute bottom-0 left-0 right-0 bg-ink/60 text-white text-xs px-3 py-2 backdrop-blur-sm">
-          Kampus UMY
-        </div>
+        <div class="absolute bottom-0 left-0 right-0 bg-ink/60 text-white text-xs px-3 py-2 backdrop-blur-sm">Kampus UMY</div>
       </div>
     </div>
-    <p class="text-xs text-sage mt-2 text-center">
-      *Gambar responsif — ukuran berubah sesuai layar
-    </p>
-
+    <p class="text-xs text-sage mt-2 text-center">*Gambar responsif — ukuran berubah sesuai layar</p>
     <button onclick="alert('Ini adalah Halaman Tentang Saya!')"
             class="mt-8 px-4 py-2 bg-transparent border border-rust text-rust
                    rounded text-xs tracking-widest uppercase cursor-pointer
@@ -320,92 +248,24 @@
 <!-- ===== HOBI ===== -->
 <section id="hobi" class="page pt-20 bg-ink text-cream">
   <div class="max-w-5xl mx-auto px-8 py-16 animate-fadeUp">
-
     <h2 class="font-playfair text-5xl text-cream mb-2">Hobi Saya</h2>
     <div class="w-12 h-0.5 bg-gold mb-10"></div>
-
-    <!-- Cards -->
     <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6">
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">📸</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Fotografi</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Mengabadikan momen indah dalam kehidupan sehari-hari melalui lensa kamera,
-          dari potret manusia hingga pemandangan alam.
-        </p>
-      </div>
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">🎮</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Gaming</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Bermain video game sebagai cara relaksasi sekaligus mengasah kemampuan
-          berpikir strategis dan refleks.
-        </p>
-      </div>
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">📚</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Membaca</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Membaca buku tentang teknologi, fiksi ilmiah, dan pengembangan diri untuk
-          memperluas wawasan.
-        </p>
-      </div>
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">🎵</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Musik</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Mendengarkan berbagai genre musik dan sesekali mencoba memainkan gitar
-          akustik untuk mengekspresikan diri.
-        </p>
-      </div>
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">🚴</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Bersepeda</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Bersepeda di pagi hari di sekitar kota Yogyakarta untuk menjaga kebugaran
-          dan menikmati udara segar.
-        </p>
-      </div>
-
-      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default
-                  transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1
-                  hover:border-rust/40">
-        <div class="text-4xl mb-4">💻</div>
-        <h3 class="font-playfair text-lg text-gold mb-2">Coding</h3>
-        <p class="text-sm leading-relaxed text-cream/70">
-          Membuat proyek-proyek web kecil sebagai hobi, bereksperimen dengan
-          teknologi dan desain baru.
-        </p>
-      </div>
-
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">📸</div><h3 class="font-playfair text-lg text-gold mb-2">Fotografi</h3><p class="text-sm leading-relaxed text-cream/70">Mengabadikan momen indah dalam kehidupan sehari-hari melalui lensa kamera, dari potret manusia hingga pemandangan alam.</p></div>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">🎮</div><h3 class="font-playfair text-lg text-gold mb-2">Gaming</h3><p class="text-sm leading-relaxed text-cream/70">Bermain video game sebagai cara relaksasi sekaligus mengasah kemampuan berpikir strategis dan refleks.</p></div>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">📚</div><h3 class="font-playfair text-lg text-gold mb-2">Membaca</h3><p class="text-sm leading-relaxed text-cream/70">Membaca buku tentang teknologi, fiksi ilmiah, dan pengembangan diri untuk memperluas wawasan.</p></div>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">🎵</div><h3 class="font-playfair text-lg text-gold mb-2">Musik</h3><p class="text-sm leading-relaxed text-cream/70">Mendengarkan berbagai genre musik dan sesekali mencoba memainkan gitar akustik untuk mengekspresikan diri.</p></div>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">🚴</div><h3 class="font-playfair text-lg text-gold mb-2">Bersepeda</h3><p class="text-sm leading-relaxed text-cream/70">Bersepeda di pagi hari di sekitar kota Yogyakarta untuk menjaga kebugaran dan menikmati udara segar.</p></div>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-7 cursor-default transition-all duration-300 hover:bg-rust/20 hover:-translate-y-1 hover:border-rust/40"><div class="text-4xl mb-4">💻</div><h3 class="font-playfair text-lg text-gold mb-2">Coding</h3><p class="text-sm leading-relaxed text-cream/70">Membuat proyek-proyek web kecil sebagai hobi, bereksperimen dengan teknologi dan desain baru.</p></div>
     </div>
-
-    <!-- Video -->
     <div class="mt-14 pt-10 border-t border-white/10">
       <h3 class="font-playfair text-2xl italic text-cream mb-4">🎬 Video Hobi Favorit</h3>
       <div class="bg-black/40 rounded-lg overflow-hidden max-w-xl">
-        <iframe
-          width="560" height="315"
+        <iframe width="560" height="315"
           src="https://www.youtube.com/embed/gPzYP046aC8?si=4Wsvpe04hetSvBya&start=89"
           title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-          class="w-full">
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="w-full">
         </iframe>
       </div>
       <button onclick="alert('Ini adalah Video Hobi Saya!')"
@@ -415,7 +275,23 @@
         ▶ Info Video
       </button>
     </div>
+  </div>
+</section>
 
+<!-- ================================================================ -->
+<!-- ===== HALAMAN FORM (BARU - TUGAS PRAKTIKUM MODUL 7) ===== -->
+<!-- ================================================================ -->
+<section id="form" class="page pt-20 bg-paper">
+  <div class="max-w-2xl mx-auto px-8 py-16 animate-fadeUp">
+
+    <!-- Header halaman -->
+    <h2 class="font-playfair text-5xl mb-2 text-ink">Formulir Data</h2>
+    <div class="w-12 h-0.5 bg-rust mb-3"></div>
+    <p class="text-sm text-sage mb-10">
+      Isi formulir di bawah ini, lalu klik 
+    </p>
+
+    
   </div>
 </section>
 
@@ -426,28 +302,100 @@
 </footer>
 
 <script>
+  /* ---- Navigasi halaman ---- */
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-
     document.getElementById(id).classList.add('active');
     document.getElementById('nav-' + id).classList.add('active');
-
-    // Footer style
     const footer = document.getElementById('page-footer');
     if (id === 'hobi') {
       footer.className = 'text-center px-8 py-8 text-xs border-t border-white/10 bg-black/30 text-cream/40';
     } else {
       footer.className = 'text-center px-8 py-8 text-xs text-sage border-t border-ink/10 bg-paper';
     }
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return false;
   }
-
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', e => e.preventDefault());
   });
+
+  /* ---- Format tanggal ke Bahasa Indonesia ---- */
+  function formatTanggal(dateStr) {
+    if (!dateStr) return '-';
+    const bulan = ['Januari','Februari','Maret','April','Mei','Juni',
+                   'Juli','Agustus','September','Oktober','November','Desember'];
+    const [y, m, d] = dateStr.split('-');
+    return `${parseInt(d)} ${bulan[parseInt(m) - 1]} ${y}`;
+  }
+
+  /* ---- Hitung umur dari tanggal lahir ---- */
+  function hitungUmur(dateStr) {
+    if (!dateStr) return '-';
+    const lahir    = new Date(dateStr);
+    const sekarang = new Date();
+    let umur = sekarang.getFullYear() - lahir.getFullYear();
+    const belumUlangTahun =
+      sekarang.getMonth() < lahir.getMonth() ||
+      (sekarang.getMonth() === lahir.getMonth() && sekarang.getDate() < lahir.getDate());
+    if (belumUlangTahun) umur--;
+    return umur + ' tahun';
+  }
+
+  /* ================================================================
+     FUNGSI UTAMA TUGAS:
+     1. Menampilkan data dari atribut SELECT  (50 poin)
+     2. Menampilkan data dari atribut tanggal (50 poin)
+  ================================================================ */
+  function tampilkanData(e) {
+    e.preventDefault();
+
+    // Ambil semua nilai form
+    const nama   = document.getElementById('nama').value;
+    const alamat = document.getElementById('alamat').value;
+    const tgl    = document.getElementById('tgl_lahir').value;  // ← date
+    const kota   = document.getElementById('kota').value;        // ← select
+    const prodi  = document.getElementById('prodi').value;       // ← select
+    const pesan  = document.getElementById('pesan').value;
+    const jk     = document.querySelector('input[name="jk"]:checked').value;
+
+    const bahasaList = [...document.querySelectorAll('input[name="bahasa"]:checked')]
+                         .map(cb => cb.value);
+    const bahasa = bahasaList.length ? bahasaList.join(', ') : 'Belum dipilih';
+
+    // --- ISI CARD 1: HASIL SELECT (50 poin) ---
+    document.getElementById('hasil-kota').textContent  = kota;
+    document.getElementById('hasil-prodi').textContent = prodi;
+
+    // --- ISI CARD 2: HASIL DATE (50 poin) ---
+    document.getElementById('hasil-tgl').textContent   = formatTanggal(tgl);
+    document.getElementById('hasil-umur').textContent  = hitungUmur(tgl);
+
+    // --- ISI CARD 3: RINGKASAN LENGKAP ---
+    document.getElementById('hasil-nama').textContent   = nama;
+    document.getElementById('hasil-alamat').textContent = alamat;
+    document.getElementById('hasil-tgl2').textContent   = formatTanggal(tgl);
+    document.getElementById('hasil-jk').textContent     = jk;
+    document.getElementById('hasil-bahasa').textContent = bahasa;
+    document.getElementById('hasil-kota2').textContent  = kota;
+    document.getElementById('hasil-prodi2').textContent = prodi;
+    document.getElementById('hasil-pesan').textContent  = pesan;
+
+    // Sembunyikan form, tampilkan hasil
+    document.getElementById('mainForm').classList.add('hidden');
+    const hasil = document.getElementById('hasilData');
+    hasil.classList.remove('hidden');
+    hasil.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ---- Reset: tampilkan kembali form, sembunyikan hasil ---- */
+  function resetForm() {
+    document.getElementById('mainForm').reset();
+    document.getElementById('mainForm').classList.remove('hidden');
+    document.getElementById('hasilData').classList.add('hidden');
+    document.getElementById('mainForm').scrollIntoView({ behavior: 'smooth' });
+  }
 </script>
 </body>
 </html>
