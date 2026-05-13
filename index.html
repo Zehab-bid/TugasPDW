@@ -318,7 +318,31 @@
           <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-input" required />
         </div>
 
-      
+             <!-- Jenis Kelamin - radio -->
+        <div class="mt-4 space-y-2">
+          <p class="text-xs font-medium text-sage uppercase tracking-wide">Jenis Kelamin</p>
+          <div class="flex gap-6">
+            <label class="flex items-center gap-2 cursor-pointer text-sm">
+              <input type="radio" name="jk" value="Laki-laki" checked class="accent-rust w-4 h-4" /> Laki-laki
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm">
+              <input type="radio" name="jk" value="Perempuan" class="accent-rust w-4 h-4" /> Perempuan
+            </label>
+          </div>
+        </div>
+
+        <!-- Bahasa Pemrograman - checkbox -->
+        <div class="mt-4 space-y-2">
+          <p class="text-xs font-medium text-sage uppercase tracking-wide">Bahasa Pemrograman yang Dikuasai</p>
+          <div class="flex flex-wrap gap-4">
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="bahasa" value="HTML/CSS"    class="accent-rust w-4 h-4" /> HTML/CSS</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="bahasa" value="JavaScript"  class="accent-rust w-4 h-4" /> JavaScript</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="bahasa" value="Python"      class="accent-rust w-4 h-4" /> Python</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="bahasa" value="PHP"         class="accent-rust w-4 h-4" /> PHP</label>
+          </div>
+        </div>
+
+ 
 
   </div>
 </section>
