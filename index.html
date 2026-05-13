@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio — Halaman Utama</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cream: #F5F0E8;
@@ -657,6 +656,57 @@
       </div>
     </div>
 
+    <!-- Video section -->
+    <div class="hobi-video">
+      <h3>🎬 Video Hobi Favorit</h3>
+      <div class="video-wrapper">
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/gPzYP046aC8?si=4Wsvpe04hetSvBya&amp;start=89" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+  </iframe>
+</div>
+      <button class="alert-btn alert-btn-light" style="margin-top:1rem" onclick="alert('Ini adalah Video Hobi Saya!')">▶ Info Video</button>
+    </div>
+  </div>
+</section>
+
+<footer id="page-footer">
+  <p>© 2024 Portofolio Mahasiswa — Teknologi Informasi UMY &nbsp;·&nbsp; Praktikum PDW Modul 7</p>
+</footer>
+
+<script>
+  function showPage(id) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+    // Show target
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+
+    // Update footer style
+    const footer = document.getElementById('page-footer');
+    if (id === 'hobi') {
+      footer.classList.add('dark');
+    } else {
+      footer.classList.remove('dark');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  // Prevent default on all nav links
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', e => e.preventDefault());
+  });
+    
 </script>
 </body>
 </html>
