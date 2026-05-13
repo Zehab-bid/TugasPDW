@@ -403,6 +403,74 @@
       </fieldset>
     </form>
 
+    <!-- ================================================================ -->
+    <!-- ===== HASIL DATA (muncul setelah klik Tampilkan Data) ===== -->
+    <!-- ================================================================ -->
+    <div id="hasilData" class="hidden mt-10 space-y-6">
+
+      <!-- CARD 1: Hasil SELECT (50 poin) -->
+      <div class="result-card bg-white rounded-xl border border-ink/10 shadow-sm overflow-hidden">
+        <div class="bg-rust px-6 py-3 flex items-center gap-2">
+          <span class="text-white text-xl"></span>
+          <div>
+            <h3 class="font-playfair text-white text-lg italic">Data dari Atribut Select</h3>
+            <p class="text-white/70 text-xs">Nilai yang dipilih dari elemen &lt;select&gt;</p>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs text-sage uppercase tracking-wide font-medium w-36 shrink-0">Kota Asal</span>
+            <span id="hasil-kota"
+                  class="text-sm font-semibold text-rust bg-rust/10 px-4 py-1.5 rounded-full border border-rust/20"></span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-xs text-sage uppercase tracking-wide font-medium w-36 shrink-0">Program Studi</span>
+            <span id="hasil-prodi"
+                  class="text-sm font-semibold text-rust bg-rust/10 px-4 py-1.5 rounded-full border border-rust/20"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Hasil DATE (50 poin) -->
+      <div class="result-card bg-white rounded-xl border border-ink/10 shadow-sm overflow-hidden">
+        <div class="bg-gold px-6 py-3 flex items-center gap-2">
+          <span class="text-ink text-xl"></span>
+          <div>
+            <h3 class="font-playfair text-ink text-lg italic">Data dari Atribut Tanggal</h3>
+            <p class="text-ink/60 text-xs">Nilai yang diambil dari elemen &lt;input type="date"&gt;</p>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs text-sage uppercase tracking-wide font-medium w-36 shrink-0">Tanggal Lahir</span>
+            <span id="hasil-tgl" class="text-sm font-medium text-ink"></span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-xs text-sage uppercase tracking-wide font-medium w-36 shrink-0">Umur Sekarang</span>
+            <span id="hasil-umur"
+                  class="text-sm font-semibold text-gold bg-gold/10 px-4 py-1.5 rounded-full border border-gold/30"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Ringkasan semua data -->
+      <div class="result-card bg-white rounded-xl border border-ink/10 shadow-sm overflow-hidden">
+        <div class="bg-sage px-6 py-3 flex items-center gap-2">
+          <span class="text-white text-xl"></span>
+          <h3 class="font-playfair text-white text-lg italic">Ringkasan Semua Data</h3>
+        </div>
+        <div class="p-6 divide-y divide-ink/8 text-sm">
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Nama</span><span id="hasil-nama" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Alamat</span><span id="hasil-alamat" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Tanggal Lahir</span><span id="hasil-tgl2" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Jenis Kelamin</span><span id="hasil-jk" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Bahasa</span><span id="hasil-bahasa" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Kota Asal</span><span id="hasil-kota2" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Program Studi</span><span id="hasil-prodi2" class="text-ink"></span></div>
+          <div class="flex gap-4 py-2.5"><span class="text-sage text-xs uppercase tracking-wide font-medium w-36 shrink-0">Pesan</span><span id="hasil-pesan" class="text-ink italic"></span></div>
+        </div>
+      </div>
+
   </div>
 </section>
 
