@@ -618,57 +618,45 @@
   </div>
 </section>
 
-    <!-- Video section -->
-    <div class="hobi-video">
-      <h3>🎬 Video Hobi Favorit</h3>
-      <div class="video-wrapper">
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/gPzYP046aC8?si=4Wsvpe04hetSvBya&amp;start=89" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
-  </iframe>
-</div>
-      <button class="alert-btn alert-btn-light" style="margin-top:1rem" onclick="alert('Ini adalah Video Hobi Saya!')">▶ Info Video</button>
+<!-- ====== HOBI ====== -->
+<section id="hobi" class="page">
+  <div class="hobi-inner">
+    <h2>Hobi Saya</h2>
+    <div class="section-rule"></div>
+
+    <div class="hobi-cards">
+      <div class="hobi-card">
+        <div class="hobi-icon">📸</div>
+        <h3>Fotografi</h3>
+        <p>Mengabadikan momen indah dalam kehidupan sehari-hari melalui lensa kamera, dari potret manusia hingga pemandangan alam.</p>
+      </div>
+      <div class="hobi-card">
+        <div class="hobi-icon">🎮</div>
+        <h3>Gaming</h3>
+        <p>Bermain video game sebagai cara relaksasi sekaligus mengasah kemampuan berpikir strategis dan refleks.</p>
+      </div>
+      <div class="hobi-card">
+        <div class="hobi-icon">📚</div>
+        <h3>Membaca</h3>
+        <p>Membaca buku tentang teknologi, fiksi ilmiah, dan pengembangan diri untuk memperluas wawasan.</p>
+      </div>
+      <div class="hobi-card">
+        <div class="hobi-icon">🎵</div>
+        <h3>Musik</h3>
+        <p>Mendengarkan berbagai genre musik dan sesekali mencoba memainkan gitar akustik untuk mengekspresikan diri.</p>
+      </div>
+      <div class="hobi-card">
+        <div class="hobi-icon">🚴</div>
+        <h3>Bersepeda</h3>
+        <p>Bersepeda di pagi hari di sekitar kota Yogyakarta untuk menjaga kebugaran dan menikmati udara segar.</p>
+      </div>
+      <div class="hobi-card">
+        <div class="hobi-icon">💻</div>
+        <h3>Coding</h3>
+        <p>Membuat proyek-proyek web kecil sebagai hobi, bereksperimen dengan teknologi dan desain baru.</p>
+      </div>
     </div>
-  </div>
-</section>
 
-<footer id="page-footer">
-  <p>© 2024 Portofolio Mahasiswa — Teknologi Informasi UMY &nbsp;·&nbsp; Praktikum PDW Modul 7</p>
-</footer>
-
-<script>
-  function showPage(id) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-
-    // Show target
-    document.getElementById(id).classList.add('active');
-    document.getElementById('nav-' + id).classList.add('active');
-
-    // Update footer style
-    const footer = document.getElementById('page-footer');
-    if (id === 'hobi') {
-      footer.classList.add('dark');
-    } else {
-      footer.classList.remove('dark');
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    return false;
-  }
-
-  // Prevent default on all nav links
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', e => e.preventDefault());
-  });
-    
 </script>
 </body>
 </html>
